@@ -20,6 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('phone');
             $table->string('agent_name');
             $table->string('agent_number');
+            $table->string('super_agent_name');
+            $table->string('super_agent_number');
             $table->string('password');
             $table->string('street');
             $table->string('ward');
