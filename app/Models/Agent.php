@@ -12,27 +12,39 @@ use Illuminate\Notifications\Notifiable;
  * @property int $id
  * @property string $firstname
  * @property string $lastname
- * @property string $name
- * @property string $email
- * @property int|null $phone
+ * @property int $phone
+ * @property int $district_id
+ * @property string $street
+ * @property string $agent_name
+ * @property string $agent_number
+ * @property string|null $super_agent_name
+ * @property string|null $super_agent_number
  * @property string $password
- * @property string $token
  * @property int $created_by
  * @property int $modified_by
  * @property string $created_at
  * @property string|null $updated_at
  * @property string|null $deleted_at
  */
-class User extends Authenticatable
+class Agent extends Authenticatable
 {
     use HasFactory, Notifiable, SoftDeletes;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
         'firstname',
         'lastname',
-        'email',
         'phone',
-        'token',
+        'district_id',
+        'street',
+        'agent_name',
+        'agent_number',
+        'super_agent_name',
+        'super_agent_number',
         'password',
         'created_by',
         'modified_by',
@@ -41,6 +53,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+    ];
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
     ];
 
     protected $appends = [
