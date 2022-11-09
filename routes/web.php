@@ -16,4 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
+//Route::post('login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
+Route::any('register', function(){
+    return redirect()->route('login');
+});

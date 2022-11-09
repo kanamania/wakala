@@ -6,3 +6,10 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+.card {
+    .card-header {
+        background: #2e3036;
+        color: white;
+    }
+}
