@@ -19,3 +19,7 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::any('login', [App\Http\Controllers\HomeController::class, 'login'])->name('front.login');
 Route::any('register', [App\Http\Controllers\HomeController::class, 'register'])->name('front.register');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
