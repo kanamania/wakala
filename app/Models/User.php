@@ -8,6 +8,24 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * @property int $id
+ * @property string $firstname
+ * @property string $lastname
+ * @property string|null $email
+ * @property int $phone
+ * @property int $district_id
+ * @property string $ward
+ * @property string $street
+ * @property string $agent_name
+ * @property string $agent_number
+ * @property string|null $super_agent_name
+ * @property string|null $super_agent_number
+ * @property string $password
+ * @property string $created_at
+ * @property string|null $updated_at
+ * @property string|null $deleted_at
+ */
 class User extends Authenticatable
 {
     use HasFactory, Notifiable, SoftDeletes;
@@ -32,22 +50,21 @@ class User extends Authenticatable
         'password',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected $appends = [
+        'name'
+    ];
+
+    public function getNameAttribute()
+    {
+        return $this->firstname.' '.$this->lastname;
+    }
 }
