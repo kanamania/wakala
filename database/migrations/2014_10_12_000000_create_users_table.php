@@ -17,18 +17,20 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('firstname');
             $table->string('lastname');
+            $table->string('email')->nullable();
             $table->string('phone');
             $table->string('agent_name');
             $table->string('agent_number');
-            $table->string('super_agent_name');
-            $table->string('super_agent_number');
+            $table->string('super_agent_name')->nullable();
+            $table->string('super_agent_number')->nullable();
             $table->string('password');
             $table->string('street');
-            $table->string('ward');
-            $table->unsignedBigInteger('region_id');
+            $table->string('ward')->nullable();
             $table->unsignedBigInteger('district_id');
             $table->rememberToken();
+            $table->timestamp('email_verified_at');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
